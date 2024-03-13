@@ -17,7 +17,7 @@ def index():  # put application's code here
 
 @app.route('/actions', methods=['GET', 'POST'])
 def actions():
-    if  'login' in session:
+    if 'login' in session:
         cnxn = pyodbc.connect('Driver={SQL Server};' +
                               'server=DESKTOP-K00LQHI\Andriy;' +
                               'DATABASE=Chopek;' +
