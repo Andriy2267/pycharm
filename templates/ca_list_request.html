@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crew members</title>
+</head>
+<body>
+<form action="/ca_list_processing" method="post">
+    Enter employee Id: <input type="text" name="employee_id"></br>
+    or phone number: <input type="text" name="phone"></br>
+    or part of surname: <input type="text" name="description"></br>
+    or part of address: <input type="text" name="address"></br>
+    Press the button: <button type="submit">Submit</button>
+    To return to the menu press the button <button type="submit">Exit</button>
+    {% for row in rows %}
+    </br><a href="/ca_form?id={{row[0] }}">{{ row[1] + row[2] }}</a>
+    {% endfor %}
+</form>
+</body>
+</html>

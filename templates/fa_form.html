@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flights Member Card</title>
+</head>
+<body>
+<form action="/fa_form_processing" method="post">
+    <h3>Flight card <input type="text" readonly name="id" value="{{ row[0] }} " ></br></h3>
+    You can change description of flight: <input type="text" name="description" value="{{ row[1] }}"></br>
+    or departure time: <input type="text" name="departure_time" value="{{ row[2][0:5] }}"></br>
+    or arrival time: <input type="text" name="arrival_time" value="{{ row[3][0:5] }}"></br>
+    To save press the button: <button type="submit" name="save">Save</button></br>
+    To add new flight, and then change descriptions, departure and arrival times, enter new Id and press the button Add:
+        <input type="text" name="newid">&nbsp<button type="submit" name="add">Add</button></br>
+    To assign crew members to the flight select crew member from the list
+    <select name="crew_assign">
+{% for crewrow in crewrows %}
+    <option value="{{ crewrow[0] }}">{{ crewrow[1] }}</option>
+{% endfor %}
+    </select>
+    and press the button: <button type="submit" name="assign">Assign</button></br>
+    To revoke an assignment select crew member from the list
+    <select name="crew_revoke">
+{% for assignment in assignments %}
+    <option value="{{ assignment[0] }}">{{ assignment[1] }}</option>
+{% endfor %}
+    </select>
+    and press the button: <button type="submit" name="revoke">Revoke</button></br>
+    To cancel the flight press the button: <button type="submit" name="delete">Delete</button></br>
+{% for assignment in assignments %}
+    {{ assignment[0] }}.{{ assignment[1] }} {{ assignment[2] }}</br>
+{% endfor %}
+    To approve assignments press the button <button type="submit" name="approve">Approve</button></br>
+    To return to the menu press the button <button type="submit" name="exit">Exit</button></br>
+    </br>{{ response }}
+</form>
+</body>
+</html>
